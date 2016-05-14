@@ -15,7 +15,16 @@ class UserService {
         return this._http.get('https://api.github.com/users?per_page=100').map(res=>res.json());
     }
     getUserDetail(login:string):Observable<User>{
-        console.log(login);
         return  this._http.get('https://api.github.com/users/'+login).map(res=>res.json());
+    }
+    
+    getUserRepos(login:string):Observable<User>{
+        return this._http.get('https://api.github.com/users/'+login+'/repos').map(res=>res.json());
+    }
+    getUserFollowers(login:string):Observable<User>{
+        return this._http.get('https://api.github.com/users/'+login+'/followers?per_page=100').map(res=>res.json());
+    }
+    getUserFollowing(login:string):Observable<User>{
+        return this._http.get('https://api.github.com/users/'+login+'/following?per_page=100').map(res=>res.json()) ;
     }
 }

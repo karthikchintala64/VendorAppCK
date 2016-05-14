@@ -1,8 +1,8 @@
 import { Component, OnInit } from 'angular2/core';
-import {User} from './user'
-import {UserService} from './users.service'
+import { User } from './user'
+import { UserService } from './users.service'
 import { UserDetailsComponent } from './user-details.component'
-import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteConfig, Route,Router} from 'angular2/router';
+import { ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteConfig, Route,Router } from 'angular2/router';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class UsersComponent implements OnInit {
         this._userService.getUsers().subscribe(
             data => this.users=data,
             error=> alert(error),
-            ()=>console.log('Finished')   
+            ()=>console.log('got all users')   
         )
     }        
     goToDetail(login:string){
