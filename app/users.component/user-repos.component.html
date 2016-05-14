@@ -1,0 +1,19 @@
+<div *ngIf="repos" class="well">
+    <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Repositeries</h3>
+  </div>
+  <div class="panel-body">
+      <table class="table table-striped">
+          <tr>
+              <td colspan="2">
+                  <a (click)="goBackToDetails()"> <img [src]="repos[1].owner.avatar_url" alt="" class="img-rounded"/></a> 
+                  </td>
+          </tr>
+          <tr *ngFor="let repo of repos">
+              <td><a [href]="repo.html_url" target="_blank">{{repo.name}}</a></td>
+          </tr>
+          </table>
+          </div>
+          </div>
+          </div>

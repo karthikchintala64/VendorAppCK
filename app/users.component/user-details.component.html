@@ -1,12 +1,15 @@
+
 <div *ngIf="selectedUser" class="well">
-    <div class="panel panel-default">
+    <div class="panel panel-default">        
   <div class="panel-heading">
     <h3 class="panel-title">Details</h3>
   </div>
+  
   <div class="panel-body">
       <table class="table table-striped">
           <tr>
-              <td colspan="2"><img [src]="selectedUser.avatar_url" alt="" class="img-rounded"/> </td>
+              <td colspan="2"><img [src]="selectedUser.avatar_url" alt="" class="img-rounded"/> 
+              <div class="pull-right"><a (click)="goBack()">All Users</a></div></td>
           </tr>
           <tr>
               <td>Name</td>
@@ -18,15 +21,15 @@
           </tr>
           <tr>
               <td>Number or Repositories</td>
-              <td>{{selectedUser.public_repos}}</td>
+              <td><a (click)="goToRepos()">{{selectedUser.public_repos}}</a></td>
           </tr>
           <tr>
               <td>Followers</td>
-              <td>{{selectedUser.followers}}</td>
+              <td><a (click)="goToFollowers()">{{selectedUser.followers}}</a></td>
           </tr>
           <tr>
               <td>Following</td>
-              <td>{{selectedUser.following}}</td>
+              <td><a (click)="goToFollowing()">{{selectedUser.following}}</a></td>
           </tr>
           <tr>
               <td>Created</td>
@@ -38,9 +41,5 @@
           </tr>
       </table>
   </div>
+</div>  
 </div>
-<h2></h2>
-    
-</div>
-
-<a (click)="goBack()">All Users</a>

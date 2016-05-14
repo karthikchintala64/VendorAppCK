@@ -6,7 +6,6 @@ import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteConfig, Route,RouteParams,Rout
 
 
 @Component({
-    selector: 'user-details',
     templateUrl: './app/users.component/user-details.component.html',
     styleUrls:['./app/users.component/user.css'],
     pipes: [TruncatePipe],
@@ -28,6 +27,18 @@ export class UserDetailsComponent implements OnInit {
     goBack(){
         let link=['Users']       
         console.log(link); 
+        this._router.navigate(link);
+    }
+    goToRepos(){
+        let link=['UserRepos',{ login: this.params.get('login') }];
+        this._router.navigate(link);
+    }
+    goToFollowers(){
+        let link=['UserFollowers',{ login: this.params.get('login') }];
+        this._router.navigate(link);
+    }
+    goToFollowing(){
+        let link=['UserFollowing',{ login: this.params.get('login') }];
         this._router.navigate(link);
     }
 }
