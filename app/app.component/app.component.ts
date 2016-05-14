@@ -3,7 +3,8 @@ import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteConfig, Route} from 'angular2/
 import {HomeComponent} from '../../app/home.component/home.component'
 import {AboutComponent} from '../../app/about.component/about.component'
 import {EventsComponent} from '../../app/events.component/list-events.component/list-events.component'
-import {UsersComponent} from '../../app/users.component/users-list.component/users-list.component'
+import {UsersComponent} from '../../app/users.component/users-list.component'
+import {UserDetailsComponent} from '../../app/users.component/user-details.component'
 import {ContactComponent} from '../../app/contact.component/contact.component'
 
 @Component({
@@ -14,11 +15,12 @@ import {ContactComponent} from '../../app/contact.component/contact.component'
     providers: [ROUTER_PROVIDERS]
 })
 @RouteConfig([
-    { path: '/', component: HomeComponent, as: 'Home',useAsDefault: true },
-    { path: '/About', component: AboutComponent, as: 'About' },
-    { path: '/Events', component: EventsComponent, as: 'Events' },
-    {path:'/Users',component:UsersComponent, as: 'Users'},
-    { path: '/Contact', component: ContactComponent, as: 'Contact' }
+    { path: '/', component: HomeComponent, name: 'Home',useAsDefault: true },
+    { path: '/About', component: AboutComponent, name: 'About' },
+    { path: '/Events', component: EventsComponent, name: 'Events' },
+    {path:'/Users',component:UsersComponent, name: 'Users'},
+    {path:'/detail/:login',component:UserDetailsComponent, name: 'UserDetails'},
+    { path: '/Contact', component: ContactComponent, name: 'Contact' }
 ])
 export class AppComponent {
 

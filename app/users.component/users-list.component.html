@@ -1,0 +1,10 @@
+<ul class="list-inline">
+    <li *ngFor="let user of users" class="list-inline-item p-y-10">
+        <div class="md-col-1">
+        <a (click)="goToDetail(user.login)">
+        <img [src]="user.avatar_url" class="img-rounded" [title]="user.login" [alt]="user.login"/>
+        </a>
+        </div>
+    </li>
+</ul>
+<user-details [login]="selectedUserLogin"></user-details>

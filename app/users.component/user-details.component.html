@@ -1,0 +1,46 @@
+<div *ngIf="selectedUser" class="well">
+    <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Details</h3>
+  </div>
+  <div class="panel-body">
+      <table class="table table-striped">
+          <tr>
+              <td colspan="2"><img [src]="selectedUser.avatar_url" alt="" class="img-rounded"/> </td>
+          </tr>
+          <tr>
+              <td>Name</td>
+              <td>{{selectedUser.name}}</td>
+          </tr>
+          <tr>
+              <td>Email</td>
+              <td>{{selectedUser.email}}</td>
+          </tr>
+          <tr>
+              <td>Number or Repositories</td>
+              <td>{{selectedUser.public_repos}}</td>
+          </tr>
+          <tr>
+              <td>Followers</td>
+              <td>{{selectedUser.followers}}</td>
+          </tr>
+          <tr>
+              <td>Following</td>
+              <td>{{selectedUser.following}}</td>
+          </tr>
+          <tr>
+              <td>Created</td>
+              <td>{{selectedUser.created_at | truncate : 10}}</td>
+          </tr>
+          <tr>
+              <td>Last modified</td>
+              <td>{{selectedUser.updated_at | truncate : 10}}</td>
+          </tr>
+      </table>
+  </div>
+</div>
+<h2></h2>
+    
+</div>
+
+<a (click)="goBack()">All Users</a>
