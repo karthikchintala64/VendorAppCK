@@ -12,13 +12,32 @@ import { Observable } from 'rxjs/Observable';
 export class UserFollowersComponent implements OnInit {
     login:string;
     users:Observable<User>;
+    sincePrev:number;
+    sinceNext:number;
+    pageSize:number;
+    
     constructor(private userService:UserService,private params:RouteParams,private router:Router) { }
     ngOnInit() { 
         this.login=this.params.get('login');
-        this.users=this.userService.getUserFollowers(this.login);
+        this.pageSize=10;
+        this.sinceNext=2;
+        this.sincePrev=0;
+        this.users=this.userService.getUserFollowers(this.login,this.pageSize,1);
     }
     goToDetail(login:string){
         let link=['UserDetails',{login:login}]        
         this.router.navigate(link);
+    }
+    
+    getUsersNext(sinceValue:number){
+        this.sincePrev++;
+        this.sinceNext++;
+        this.users= this.userService.getUserFollowers(this.login,this.pageSize,sinceValue);
+    }
+    
+    getUsersPrev(sinceValue:number){
+        this.sincePrev--;
+        this.sinceNext--;
+        this.users= this.userService.getUserFollowers(this.login,this.pageSize,sinceValue);
     }
 }
