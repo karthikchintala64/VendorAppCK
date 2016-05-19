@@ -3,6 +3,7 @@ import { User } from './user'
 import { UserService } from './users.service'
 import { UserDetailsComponent } from './user-details.component'
 import { ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteConfig, Route,Router } from 'angular2/router';
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -11,17 +12,13 @@ import { ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteConfig, Route,Router } from '
     providers:[UserService]
 })
 export class UsersComponent implements OnInit {
-    users:User[];
+    users:Observable<User[]>;
     selectedUserLogin:string;
     
     constructor(private _userService:UserService,private _router:Router) { }
 
     ngOnInit() { 
-        this._userService.getUsers().subscribe(
-            data => this.users=data,
-            error=> alert(error),
-            ()=>console.log('got all users')   
-        )
+        this.users= this._userService.getUsers();
     }        
     goToDetail(login:string){
         let link=['UserDetails',{login:login}]        

@@ -2,6 +2,7 @@ import { Component, OnInit } from 'angular2/core';
 import {User} from './user';
 import {UserService} from './users.service'
 import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteConfig, Route,RouteParams,Router} from 'angular2/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     templateUrl: './app/users.component/users-list.component.html',
@@ -10,15 +11,11 @@ import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteConfig, Route,RouteParams,Rout
 })
 export class UserFollowingComponent implements OnInit {
     login:string;
-    users:User;
+    users:Observable<User>;
     constructor(private userService:UserService,private params:RouteParams,private router:Router) { }
     ngOnInit() { 
         this.login=this.params.get('login');
-        this.userService.getUserFollowing(this.login).subscribe(
-            data=> this.users=data,
-            error=>alert(error),
-            ()=>console.log('got following users')
-        )
+        this.users=this.userService.getUserFollowing(this.login);
     }
     goToDetail(login:string){
         let link=['UserDetails',{login:login}]        
