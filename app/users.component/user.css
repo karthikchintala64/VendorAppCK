@@ -6,3 +6,6 @@ img{
 li{
     padding: 0;
 }
+.liPagination,.liPagination a{
+    display: block;
+}

@@ -1,9 +1,13 @@
 <ul class="list-inline">
-    <li *ngFor="let user of users" class="list-inline-item p-y-10">
+    <li *ngFor="let user of users | async" class="list-inline-item p-y-10">
         <div class="md-col-1">
-        <a (click)="goToDetail(user.login)">
-        <img [src]="user.avatar_url" class="img-rounded" [title]="user.login" [alt]="user.login"/>
-        </a>
+            <a (click)="goToDetail(user.login)">
+                <img [src]="user.avatar_url" class="img-rounded" [title]="user.login" [alt]="user.login"/>
+            </a>
         </div>
+    </li>
+    <li class="liPagination">
+        <a class="pull-left" *ngIf="sincePrev>0" (click)="getUsersPrev(sincePrev)">Prev {{sincePrev}}</a>
+        <a class="pull-right" (click)="getUsersNext(sinceNext)">Next {{sinceNext}}</a>
     </li>
 </ul>
